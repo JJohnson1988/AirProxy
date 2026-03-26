@@ -1,0 +1,41 @@
+<service-group>
+  <name replace-wildcards="yes">Generic Printer</name>
+
+  <service>
+    <type>_ipp._tcp</type>
+    <subtype>_universal._sub._ipp._tcp</subtype>
+    <port>631</port>
+
+    <txt-record>txtvers=1</txt-record>
+    <txt-record>qtotal=1</txt-record>
+    <txt-record>priority=51</txt-record>
+    <txt-record>rp=ipp/print</txt-record>
+    <txt-record>printer-state=3</txt-record>
+
+    <txt-record>ty=Generic Printer Model</txt-record>
+    <txt-record>product=(Generic Printer Model)</txt-record>
+    <txt-record>printer-name=Generic Printer Funtimes Name</txt-record>
+    <txt-record>printer-model=Generic Printer Funtimes Model</txt-record>
+    <txt-record>note=AirPrint via IPP proxy</txt-record>
+    <txt-record>adminurl=http://myprinterhostname.local</txt-record>
+
+    <txt-record>pdl=application/octet-stream,application/PCL,application/vnd.hp-PCL,application/vnd.hp-PCLXL,application/x-QPDL,text/plain,image/urf,application/PCLm</txt-record>
+
+    <txt-record>URF=W8,RS600,IS1,CP1,IFU0,PQ4,OB10,DM1,V1.2</txt-record>
+
+    <txt-record>air=1.4</txt-record>
+    <txt-record>mopria-certified=1.3</txt-record>
+    <txt-record>TLS=1.2</txt-record>
+
+    <txt-record>Bind=F</txt-record>
+    <txt-record>Collate=F</txt-record>
+    <txt-record>Color=F</txt-record>
+    <txt-record>Copies=T</txt-record>
+    <txt-record>Duplex=T</txt-record>
+    <txt-record>PaperCustom=T</txt-record>
+    <txt-record>Punch=0</txt-record>
+    <txt-record>Scan=T</txt-record>
+
+    <txt-record>UUID=a12bc34d-12ab-1234-a567-1f86a7f5d309</txt-record>
+  </service>
+</service-group>
