@@ -9,8 +9,8 @@ import subprocess
 import errno
 
 # --- SYSTEM CONFIGURATION ---
-PRINTER_HOSTNAME = '10.1.0.30'
-PRINTER_PORT = 631
+PRINTR_ADDR = '10.1.0.30' # Change this to your printer's LAN IP address!
+PRINTR_PORT = 631
 LISTEN_PORT = 631
 MAX_THREADS = 20 # Prevent Out-Of-Memory (OOM) panics from port scanners
 
@@ -18,6 +18,7 @@ def log(message, priority="notice"):
     """
     Ultra-safe Asuswrt-Merlin logging. Uses the native router logger via
     subprocess to bypass Bash shell creation, preventing RAM exhaustion.
+    Use your specific router's own logging function for easy debugging!
     """
     try:
         subprocess.run(
@@ -48,7 +49,7 @@ def bridge_connection(client_sock, client_addr):
 
     printer_sock = None
     try:
-        # Force IPv4 outbound, as the printer itself does not use IPv6
+        # Force IPv4 outbound, as the printer itself does not use IPv6; if you need IPv6 you can change this
         printer_sock = sck.socket(sck.AF_INET, sck.SOCK_STREAM)
 
         # TCP Keep-Alives prevent strict VPN/VLAN firewalls from dropping idle rendering jobs
@@ -57,9 +58,9 @@ def bridge_connection(client_sock, client_addr):
 
         # 15s timeout allows the router's DNS to resolve the .local mDNS broadcast
         printer_sock.settimeout(15)
-        printer_sock.connect((PRINTER_HOSTNAME, PRINTER_PORT))
+        printer_sock.connect((PRINTR_ADDR, PRINTR_PORT))
     except sck.timeout:
-        log(f"TIMEOUT: {PRINTER_HOSTNAME} unreachable from {client_ip}", "err")
+        log(f"TIMEOUT: {PRINTR_ADDR} unreachable from {client_ip}", "err")
         client_sock.close()
         if printer_sock: printer_sock.close()
         return
@@ -111,7 +112,7 @@ def bridge_connection(client_sock, client_addr):
         kb = round(bytes_total / 1024, 2)
         duration = round(time.time() - start_time, 2)
 
-        # Only log meaningful data transfers to keep the syslog clean of Apple's 0.5KB status pings
+        # Only log meaningful data transfers to keep the syslog clean of Apple's 0.5KB status pings; increase value if less verbosity desired
         if kb > 1.0:
             log(f"SUCCESS: Job finished for {client_ip} | {kb}KB | {duration}s")
 
@@ -124,11 +125,11 @@ def bridge_connection(client_sock, client_addr):
         except Exception: pass
 
 def main():
-    log("SYSTEM: Booting Titanium Dual-Stack Proxy...")
+    log("SYSTEM: Booting *Titanium-Grade* Dual-Stack Proxy...")
 
     server_sock = None
     try:
-        # Bind to IPv6 '::' with V6ONLY=0 natively catches BOTH IPv4 and IPv6 traffic
+        # Bind to IPv6 '::' with V6ONLY=0 natively catches BOTH IPv4 and IPv6 traffic; you can change this if you desire IPv6-only
         server_sock = sck.socket(sck.AF_INET6, sck.SOCK_STREAM)
         server_sock.setsockopt(sck.IPPROTO_IPV6, sck.IPV6_V6ONLY, 0)
     except (AttributeError, OSError):
