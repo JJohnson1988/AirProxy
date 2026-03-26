@@ -5,4 +5,4 @@ Long story short, Apple broke a lot of older printers starting with recent OS ve
 
 **IMPORTANT**: *You still need some sort of custom mDNS/Avahi service to pair with this script, assuming your current multicast broadcast service is also incompatible. I've included a sample Avahi service, but yours needs to fit (relatively) closely with your specific printer!*
 
-It's also possible you don't need the proxy script at all, and all you need is an updated mDNS service! If that's the case, your situation and solution has become a lot easier.
+It's also possible you don't need the proxy script at all, and all you need is an updated mDNS service file! If that's the case, your situation and solution has become a lot simpler.
