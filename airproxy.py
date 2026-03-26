@@ -45,7 +45,7 @@ def bridge_connection(client_sock, client_addr):
     bytes_total = 0
     active_jobs = threading.active_count() - 1
 
-    log(f"ACCEPT: Handshake from {client_ip} | Active Jobs: {active_jobs}")
+    log(f"ACCEPT: Handshake from {client_ip} | Active Jobs: {active_jobs}") # Intentionally verbose; you can comment this out if you don't want to see handshakes
 
     printer_sock = None
     try:
