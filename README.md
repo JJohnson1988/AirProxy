@@ -11,4 +11,4 @@ It is also possible you do not need the proxy script at all, and all you need is
 
 Ultimately the proxy script is just a "dumb" pipe that listens on the IPP port and pretty much forwards whatever it receives to the printer. However, some printers will not appreciate the fact that the incoming data does not contain the correct host information in the header payload.
 
-In order to solve that, you would need to upgrade from this basic proxy to something that can intercept the data and rewrite the header information. A situation like that is more of a job for a reverse proxy (such as NGINX).
+In order to solve that, you would need to upgrade from this basic proxy to something that can intercept the data and rewrite the header information. A situation like that is more of a job for a full-featured reverse proxy, such as Nginx).
