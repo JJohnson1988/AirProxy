@@ -1,3 +1,17 @@
+<?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+
+<!--
+
+The most important fields that are mandatory and need specific changes from you are:
+
+1. host-name (how your printer can be accessed on your LAN without directly specifying an IP address)
+2. pdl (Page Description Languages that your printer supports)
+3. URF (Apple raster properties that your printer supports)
+4. UUID (Apple devices may blacklist a UUID if a handshake has failed too many times)
+
+-->
+
 <service-group>
   <name replace-wildcards="yes">Generic Printer</name>
 
