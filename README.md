@@ -7,7 +7,7 @@ Long story short, Apple broke a lot of older printers starting with recent OS ve
 
 It is also possible you do not need the proxy script at all, and all you need is an updated mDNS service file! If that is the case, your situation and solution has become a lot simpler...
 
-Some final notes: 
+*Some final notes:* 
 
 Ultimately the proxy script is just a "dumb" pipe that listens on the IPP port and pretty much forwards whatever it receives to the printer. However, some printers will not appreciate the fact that the incoming data does not contain the correct host information in the header payload.
 
