@@ -6,6 +6,8 @@
     <subtype>_universal._sub._ipp._tcp</subtype>
     <port>631</port>
 
+    <host-name>myprinterhostname.local</txt-record>
+
     <txt-record>txtvers=1</txt-record>
     <txt-record>qtotal=1</txt-record>
     <txt-record>priority=51</txt-record>
