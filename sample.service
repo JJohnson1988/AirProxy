@@ -8,7 +8,8 @@ The most important fields that are mandatory and need specific changes from you 
 1. host-name (how your printer can be accessed on your LAN without directly specifying an IP address)
 2. pdl (Page Description Languages that your printer supports)
 3. URF (Apple raster properties that your printer supports)
-4. UUID (Apple devices may blacklist a UUID if a handshake has failed too many times)
+
+Most of the other fields are also necessary, but Apple devices especially are super picky about those three...
 
 -->
 
@@ -24,25 +25,27 @@ The most important fields that are mandatory and need specific changes from you 
 
     <txt-record>txtvers=1</txt-record>
     <txt-record>qtotal=1</txt-record>
-    <txt-record>priority=51</txt-record>
+    <txt-record>priority=51</txt-record><!-- Probably optional -->
     <txt-record>rp=ipp/print</txt-record>
-    <txt-record>printer-state=3</txt-record>
+    <txt-record>printer-state=3</txt-record><!-- Probably optional -->
 
     <txt-record>ty=Generic Printer Model</txt-record>
     <txt-record>product=(Generic Printer Model)</txt-record>
-    <txt-record>printer-name=Generic Printer Funtimes Name</txt-record>
-    <txt-record>printer-model=Generic Printer Funtimes Model</txt-record>
+    <txt-record>printer-name=Generic Printer Fun-times Name</txt-record>
+    <txt-record>printer-model=Generic Printer Fun-times Model</txt-record>
     <txt-record>note=AirPrint via IPP proxy</txt-record>
-    <txt-record>adminurl=http://myprinterhostname.local</txt-record>
+    <txt-record>adminurl=http://myprinterhostname.local</txt-record><!-- Probably optional; this is where the Printer Information button on Apple print pop-ups takes you to -->
 
     <txt-record>pdl=application/octet-stream,application/PCL,application/vnd.hp-PCL,application/vnd.hp-PCLXL,application/x-QPDL,text/plain,image/urf,application/PCLm</txt-record>
 
     <txt-record>URF=W8,RS600,IS1,CP1,IFU0,PQ4,OB10,DM1,V1.2</txt-record>
 
+    <!-- You can probably just skip these entirely  
     <txt-record>air=1.4</txt-record>
     <txt-record>mopria-certified=1.3</txt-record>
     <txt-record>TLS=1.2</txt-record>
 
+    <-- Optional; my old printer service definition file had these so I included them -->
     <txt-record>Bind=F</txt-record>
     <txt-record>Collate=F</txt-record>
     <txt-record>Color=F</txt-record>
@@ -52,6 +55,7 @@ The most important fields that are mandatory and need specific changes from you 
     <txt-record>Punch=0</txt-record>
     <txt-record>Scan=T</txt-record>
 
+    <!-- Change the value if your devices fail the handshake too many times -->
     <txt-record>UUID=a12bc34d-12ab-1234-a567-1f86a7f5d309</txt-record>
   </service>
 </service-group>
