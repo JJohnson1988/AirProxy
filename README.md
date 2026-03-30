@@ -5,7 +5,7 @@ Long story short, Apple broke a lot of older printers starting with recent OS ve
 
 **IMPORTANT**: *You still need some sort of custom mDNS/Avahi service file to pair with this script, assuming your current multicast broadcast service is also incompatible. I have included a sample Avahi service file, but yours needs to fit (relatively) closely with your specific printer!*
 
-It is also possible you do not need the proxy script at all, and all you need is an updated mDNS service file! If that is the case, your situation and solution has become a lot simpler...
+It is also possible you do not need the proxy script at all, and all you need is an updated mDNS service file! If that is the case, your situation and solution has become a lot simpler. But even if you end up not using the proxy daemon full-time, you will still find it useful for troubleshooting IPP communication. The logging service (currently tailored for Asuswrt-Merlin routers) shows handshakes and potential print requests from LAN client IP addresses, which should at least give you a better idea of what's happening between a device and the printer.
 
 *Some final notes:* 
 
